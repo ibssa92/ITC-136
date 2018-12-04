@@ -10,11 +10,11 @@ read fname
 #find the file
 filefound=$( readlink -f $fname )
 
-#locate the file
-
+#locate the file (sudo updatedb)
+filelocated=$( locate *$fname* )
 
 #whereis the file
-
+filewhereis=$( whereis $fname )
 
 #executable?
 executablefile=$( ls -l $fname )
@@ -25,12 +25,6 @@ executablefile=$( ls -l $fname )
 
 echo -en "\e[94m Your File: $executablefile
  Found: $filefound
+ Location: $filelocated
+ Whereis: $filewhereis
 "
-
-
-#if find $path2check -name $fname -print -quit |
-   #grep -q '^'; then
-  #echo "the file exists!"
-#else
-  #echo "the file does not exist!"
-#fi
